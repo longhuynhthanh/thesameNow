@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/myLogin"
+            android:paddingLeft="@dimen/paddingLeft"
+            android:background="@color/colorDark"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:padding="@dimen/padding"
+                android:src="@drawable/ic_boy"
+                android:layout_width="@dimen/imgWidthHeight"
+                android:layout_height="@dimen/imgWidthHeight" />
+            <TextView
+                android:id="@+id/textview_userName"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorWhite"
+                android:layout_marginLeft="@dimen/marginLeft"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:paddingLeft="@dimen/paddingLeft"
+            android:id="@+id/noLogin"
+            android:background="@color/colorDark"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:padding="@dimen/padding"
+                android:src="@drawable/ic_user"
+                android:layout_width="@dimen/imgWidthHeight"
+                android:layout_height="@dimen/imgWidthHeight" />
+            <TextView
+                android:text="Đăng Nhập Tài Khoản"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorWhite"
+                android:layout_marginLeft="@dimen/marginLeft"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <android.support.v7.widget.CardView
+        android:layout_marginTop="20dp"
+        android:id="@+id/MyStore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:paddingLeft="@dimen/paddingLeft"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:padding="@dimen/padding"
+                android:src="@drawable/ic_store"
+                android:layout_width="@dimen/imgWidthHeight"
+                android:layout_height="@dimen/imgWidthHeight" />
+            <TextView
+                android:text="Cửa Hàng Của Tôi"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorDark"
+                android:layout_marginLeft="@dimen/marginLeft"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="2dp"
+            android:id="@+id/stores"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:paddingLeft="@dimen/paddingLeft"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:padding="@dimen/padding"
+                    android:src="@drawable/ic_store"
+                    android:layout_width="@dimen/imgWidthHeight"
+                    android:layout_height="@dimen/imgWidthHeight" />
+                <TextView
+                    android:text="Cửa Hàng"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorDark"
+                    android:layout_marginLeft="@dimen/marginLeft"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="2dp"
+            android:id="@+id/Statistics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:paddingLeft="@dimen/paddingLeft"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:padding="@dimen/padding"
+                    android:src="@drawable/ic_bars_chart"
+                    android:layout_width="@dimen/imgWidthHeight"
+                    android:layout_height="@dimen/imgWidthHeight" />
+                <TextView
+                    android:text="Thống Kê Hóa Đơn"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorDark"
+                    android:layout_marginLeft="@dimen/marginLeft"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="1dp"
+            android:id="@+id/MyAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:paddingLeft="@dimen/paddingLeft"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:padding="@dimen/padding"
+                    android:src="@drawable/ic_operator"
+                    android:layout_width="@dimen/imgWidthHeight"
+                    android:layout_height="@dimen/imgWidthHeight" />
+                <TextView
+                    android:text="Danh Sách Tài Khoản Chủ Store"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorDark"
+                    android:layout_marginLeft="@dimen/marginLeft"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="1dp"
+            android:id="@+id/MyCustomer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:paddingLeft="@dimen/paddingLeft"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:padding="@dimen/padding"
+                    android:src="@drawable/ic_girl"
+                    android:layout_width="@dimen/imgWidthHeight"
+                    android:layout_height="@dimen/imgWidthHeight" />
+                <TextView
+                    android:text="Danh Sách Tài Khoản Khách Hàng"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorDark"
+                    android:layout_marginLeft="@dimen/marginLeft"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="2dp"
+            android:id="@+id/MyCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:paddingLeft="@dimen/paddingLeft"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:padding="@dimen/padding"
+                    android:src="@drawable/ic_backend"
+                    android:layout_width="@dimen/imgWidthHeight"
+                    android:layout_height="@dimen/imgWidthHeight" />
+                <TextView
+                    android:text="Danh Mục Thức Ăn"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorDark"
+                    android:layout_marginLeft="@dimen/marginLeft"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="20dp"
+            android:id="@+id/MyPay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:paddingLeft="@dimen/paddingLeft"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:padding="@dimen/padding"
+                    android:src="@drawable/ic_credit_card"
+                    android:layout_width="@dimen/imgWidthHeight"
+                    android:layout_height="@dimen/imgWidthHeight" />
+                <TextView
+                    android:text="Thanh Toán"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorDark"
+                    android:layout_marginLeft="@dimen/marginLeft"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="10dp"
+            android:id="@+id/Invite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:paddingLeft="@dimen/paddingLeft"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:padding="@dimen/padding"
+                    android:src="@drawable/ic_employee"
+                    android:layout_width="@dimen/imgWidthHeight"
+                    android:layout_height="@dimen/imgWidthHeight" />
+                <TextView
+                    android:text="Mời Bạn Bè"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorDark"
+                    android:layout_marginLeft="@dimen/marginLeft"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="1dp"
+            android:id="@+id/feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:paddingLeft="@dimen/paddingLeft"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:padding="@dimen/padding"
+                    android:src="@drawable/ic_marketing"
+                    android:layout_width="@dimen/imgWidthHeight"
+                    android:layout_height="@dimen/imgWidthHeight" />
+                <TextView
+                    android:text="Góp Ý"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorDark"
+                    android:layout_marginLeft="@dimen/marginLeft"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="10dp"
+            android:id="@+id/guide"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:paddingLeft="@dimen/paddingLeft"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:padding="@dimen/padding"
+                    android:src="@drawable/ic_credit_card_1"
+                    android:layout_width="@dimen/imgWidthHeight"
+                    android:layout_height="@dimen/imgWidthHeight" />
+                <TextView
+                    android:text="Hướng Dẫn Thanh Toán"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorDark"
+                    android:layout_marginLeft="@dimen/marginLeft"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="1dp"
+            android:id="@+id/Private"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:paddingLeft="@dimen/paddingLeft"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:padding="@dimen/padding"
+                    android:src="@drawable/ic_padlock"
+                    android:layout_width="@dimen/imgWidthHeight"
+                    android:layout_height="@dimen/imgWidthHeight" />
+                <TextView
+                    android:text="Chính Sách Bảo Mật"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorDark"
+                    android:layout_marginLeft="@dimen/marginLeft"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="1dp"
+            android:id="@+id/myDispute"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:paddingLeft="@dimen/paddingLeft"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:padding="@dimen/padding"
+                    android:src="@drawable/ic_pager"
+                    android:layout_width="@dimen/imgWidthHeight"
+                    android:layout_height="@dimen/imgWidthHeight" />
+                <TextView
+                    android:text="Chính Sách Tranh Chấp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorDark"
+                    android:layout_marginLeft="@dimen/marginLeft"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:id="@+id/myLogout"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <TextView
+                android:textColor="@color/colorRed"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:text="Đăng Xuất"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</ScrollView>

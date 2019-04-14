@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="50dp"
+            tools:context=".MainActivity">
+
+            <android.support.design.card.MaterialCardView
+                android:id="@+id/card_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp"
+                app:strokeColor="@android:color/darker_gray"
+                app:strokeWidth="4dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:id="@+id/main_nameStore"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/store"
+                        android:drawablePadding="10dp"
+                        android:gravity="left|center"
+                        android:textColor="@color/colorDark"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/main_nameLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/main_nameStore"
+                        android:layout_marginTop="15dp"
+                        android:drawableLeft="@drawable/location"
+                        android:drawablePadding="10dp"
+                        android:gravity="left|center"
+                        android:textColor="@color/colorDark"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/main_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/main_nameLocation"
+                        android:layout_marginTop="15dp"
+                        android:drawableLeft="@drawable/phone"
+                        android:drawablePadding="10dp"
+                        android:gravity="left|center"
+                        android:textColor="@color/colorDark"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/main_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/main_phone"
+                        android:layout_marginTop="15dp"
+                        android:drawableLeft="@drawable/infomation"
+                        android:drawablePadding="10dp"
+                        android:gravity="left|center"
+                        android:textColor="@color/colorDark"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/main_info"
+                        android:layout_marginTop="15dp"
+                        android:drawableLeft="@drawable/clock"
+                        android:drawablePadding="10dp"
+                        android:gravity="left|center"
+                        android:text="Mở Cửa Từ 8h-22h"
+                        android:textColor="@color/colorDark"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </android.support.design.card.MaterialCardView>
+
+            <android.support.design.card.MaterialCardView
+                android:id="@+id/card_two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_one"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp"
+                app:strokeColor="@android:color/darker_gray"
+                app:strokeWidth="4dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp">
+
+                    <TextView
+                        android:id="@+id/tv_one"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="VỊ TRÍ"
+                        android:textSize="25dp"
+                        android:textStyle="bold" />
+
+                    <fragment
+                        android:id="@+id/map2"
+                        class="com.google.android.gms.maps.SupportMapFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/tv_one" />
+                </RelativeLayout>
+            </android.support.design.card.MaterialCardView>
+
+            <android.support.design.card.MaterialCardView
+                android:id="@+id/card_three"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_two"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp"
+                app:strokeColor="@android:color/darker_gray"
+                app:strokeWidth="4dp">
+
+                <LinearLayout
+                    android:id="@+id/layout_placeHolder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"></LinearLayout>
+            </android.support.design.card.MaterialCardView>
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+    <Button
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left"
+        android:id="@+id/shopping_cart"
+        android:background="@drawable/background_button"
+        android:textStyle="bold"
+        android:textColor="@color/colorWhite"
+        android:visibility="gone"/>
+
+</android.support.design.widget.CoordinatorLayout>
