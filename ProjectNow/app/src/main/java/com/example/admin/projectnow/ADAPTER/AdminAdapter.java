@@ -1,22 +1,13 @@
 package com.example.admin.projectnow.ADAPTER;
 
-import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.admin.projectnow.DAO.accountDAO;
-import com.example.admin.projectnow.DAO.locationDAO;
-import com.example.admin.projectnow.DAO.storeDAO;
-import com.example.admin.projectnow.FRAGMENT.AdminFragment;
 import com.example.admin.projectnow.INTERFACE.ItemClickListener;
 import com.example.admin.projectnow.MODEL.account;
 import com.example.admin.projectnow.R;
@@ -82,6 +73,10 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.AdminViewHol
                 if(isLongClick){
 
                 }
+                else
+                {
+
+                }
             }
         });
     }
@@ -98,6 +93,7 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.AdminViewHol
         @BindView(R.id.tv_passWord) TextView tvPassword;
         @BindView(R.id.tv_phone) TextView tvPhone;
         @BindView(R.id.tv_address) TextView tvAddress;
+        @BindView(R.id.image_delete)ImageView delete;
         private ItemClickListener itemClickListener;
         public void setItemClickListener(ItemClickListener itemClickListener)
         {
