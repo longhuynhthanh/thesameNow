@@ -115,21 +115,31 @@ public class sqlHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(sql7);
 
-
-//        // Create Trigger khi thêm tài khoản type = 1: chủ store => thêm location
-//        String sql9 = "CREATE TRIGGER insert_location AFTER INSERT ON " + accountDAO.TABLE +
-//                " WHEN new." + accountDAO.TYPE + " = 1" +
-//                " BEGIN" +
-//                " INSERT INTO " + locationDAO.TABLE + "(" + locationDAO.NAMELOCATION + ", " + locationDAO.LONGITUDE + ", " + locationDAO.LATITUDE + ") VALUES ('', 1, 1);" +
-//                " END;";
-//        sqLiteDatabase.execSQL(sql9);
-//        // Create Trigger khi thêm tài khoản type = 1: chủ store => thêm store
-//        String sql10 = "CREATE TRIGGER insert_store AFTER INSERT ON " + accountDAO.TABLE +
-//                " WHEN new." + accountDAO.TYPE + " = 1" +
-//                " BEGIN" +
-//                " INSERT INTO " + storeDAO.TABLE + " (" + storeDAO.NAMESTORE + ", " + storeDAO.IDLOCATION + ", " + storeDAO.USERNAMEACCOUNT + "," + storeDAO.PHONENUMBER + ", " + storeDAO.INFO + ") VALUES ('', (SELECT MAX(" + locationDAO.ID + ") FROM " + locationDAO.TABLE + "), new." + accountDAO.USERNAME + ", '', '');" +
-//                " END;";
-//        sqLiteDatabase.execSQL(sql10);
+        // Create Trigger khi xóa tài khoản type = 1:
+        String sql9 = "CREATE TRIGGER delete_account BEFORE DELETE ON " + accountDAO.TABLE +
+                " WHEN old." + accountDAO.TYPE + " = 1" +
+                " BEGIN" +
+                " DELETE FROM " + storeDAO.TABLE + " WHERE " + storeDAO.USERNAMEACCOUNT + " = old." + accountDAO.USERNAME + ";" +
+                " END;";
+        sqLiteDatabase.execSQL(sql9);
+        // Create Trigger để xóa food khi xóa cửa hàng
+        String sql10 = "CREATE TRIGGER delete_food BEFORE DELETE ON " + storeDAO.TABLE +
+                " BEGIN" +
+                " DELETE FROM " + foodDAO.TABLE + " WHERE " + foodDAO.IDSTORE + " = old." + storeDAO.ID + ";" +
+                " END;";
+        sqLiteDatabase.execSQL(sql10);
+        // Create Trigger để xóa bill khi xóa cửa hàng
+        String sql11 = "CREATE TRIGGER delete_bill BEFORE DELETE ON " + storeDAO.TABLE +
+                " BEGIN" +
+                " DELETE FROM " + billDAO.TABLE + " WHERE " + billDAO.IDSTORE + " = old." + storeDAO.ID + ";" +
+                " END;";
+        sqLiteDatabase.execSQL(sql11);
+        // Create Trigger để xóa bill info khi xóa bill
+        String sql12 = "CREATE TRIGGER delete_bill_info BEFORE DELETE ON " + billDAO.TABLE +
+                " BEGIN" +
+                " DELETE FROM " + billInfoDAO.TABLE + " WHERE " + billInfoDAO.IDBILL + " = old." + billDAO.ID + ";" +
+                " END;";
+        sqLiteDatabase.execSQL(sql12);
     }
 
     @Override
@@ -141,8 +151,10 @@ public class sqlHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + billDAO.TABLE);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + billInfoDAO.TABLE);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + accountDAO.TABLE);
-//        sqLiteDatabase.execSQL("DROP TRIGGER IF EXISTS insert_location");
-//        sqLiteDatabase.execSQL("DROP TRIGGER IF EXISTS insert_store");
+        sqLiteDatabase.execSQL("DROP TRIGGER IF EXISTS delete_account");
+        sqLiteDatabase.execSQL("DROP TRIGGER IF EXISTS delete_food");
+        sqLiteDatabase.execSQL("DROP TRIGGER IF EXISTS delete_bill");
+        sqLiteDatabase.execSQL("DROP TRIGGER IF EXISTS delete_bill_info");
         onCreate(sqLiteDatabase);
     }
 }

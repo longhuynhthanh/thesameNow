@@ -2,7 +2,6 @@ package com.example.admin.projectnow.FRAGMENT;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,11 +14,8 @@ import android.widget.TextView;
 
 import com.example.admin.projectnow.LoginActivity;
 import com.example.admin.projectnow.MODEL.account;
-import com.example.admin.projectnow.MainActivity;
 import com.example.admin.projectnow.R;
 import com.example.admin.projectnow.UTILITIES.function;
-
-import java.io.Serializable;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -163,7 +159,7 @@ public class UserFragment extends Fragment {
     @OnClick(R.id.MyAdmin)
     public void cvAdminClick()
     {
-        function.Instance().initFragment(getActivity().getSupportFragmentManager(), AdminFragment.Instance());
+        function.Instance().initFragment(getActivity().getSupportFragmentManager(), StoreAccountFragment.Instance());
 
     }
     @OnClick(R.id.MyCustomer)
