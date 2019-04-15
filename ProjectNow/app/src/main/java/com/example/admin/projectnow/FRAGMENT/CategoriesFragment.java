@@ -90,7 +90,7 @@ public class CategoriesFragment extends Fragment {
             public void onRightClicked(int position) {
                 categoriesAdapter.RemoveItem(position);
             }
-        });
+        }, this);
         ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
         itemTouchhelper.attachToRecyclerView(rvCategories);
 

@@ -19,8 +19,7 @@ import com.example.admin.projectnow.ADAPTER.AdminAdapter;
 import com.example.admin.projectnow.CONTROLLER.SwipeController;
 import com.example.admin.projectnow.CONTROLLER.SwipeControllerActions;
 import com.example.admin.projectnow.DAO.accountDAO;
-import com.example.admin.projectnow.DAO.locationDAO;
-import com.example.admin.projectnow.DAO.storeDAO;
+
 import com.example.admin.projectnow.MODEL.account;
 import com.example.admin.projectnow.R;
 
@@ -72,7 +71,7 @@ public class MyCustomerFragment extends Fragment {
             public void onRightClicked(int position) {
                 adminAdapter.RemoveItem(position);
             }
-        });
+        }, this);
         ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
         itemTouchhelper.attachToRecyclerView(rvAccounts);
 
