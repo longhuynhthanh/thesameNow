@@ -1,20 +1,13 @@
 package com.example.admin.projectnow.CONTROLLER;
 
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper.Callback;
 import android.view.MotionEvent;
 import android.view.View;
-import com.example.admin.projectnow.R;
-import com.example.admin.projectnow.UTILITIES.function;
-
 
 import static android.support.v7.widget.helper.ItemTouchHelper.*;
 
@@ -34,16 +27,13 @@ public class SwipeController extends Callback {
 
     private RecyclerView.ViewHolder currentItemViewHolder = null;
 
-    private Fragment fragment;
-
     private SwipeControllerActions buttonsActions = null;
 
 
     private static final float buttonWidth = 300;
 
-    public SwipeController(SwipeControllerActions buttonsActions, Fragment fragment) {
+    public SwipeController(SwipeControllerActions buttonsActions) {
         this.buttonsActions = buttonsActions;
-        this.fragment = fragment;
     }
 
     @Override
@@ -158,30 +148,23 @@ public class SwipeController extends Callback {
     }
 
     private void drawButtons(Canvas c, RecyclerView.ViewHolder viewHolder) {
-        float buttonWidthWithoutPadding = buttonWidth + 20;
-        float corners = 16;
 
-        Drawable drawable1 = ContextCompat.getDrawable(fragment.getActivity(), R.drawable.ic_pencil_edit_button);
-        Bitmap iconEdit = function.drawableToBitmap(drawable1);
-        Drawable drawable2 = ContextCompat.getDrawable(fragment.getActivity(), R.drawable.ic_rubbish_bin);
-        Bitmap iconDelete = function.drawableToBitmap(drawable2);
         View itemView = viewHolder.itemView;
-        float height = (float) itemView.getBottom() - (float) itemView.getTop();
-        float width = height / 3;
+        float buttonWidthWithoutPadding = ((float) itemView.getLeft() + (float)itemView.getRight())/4;
+        float corners = 16;
         Paint p = new Paint();
 
 
-        RectF icon_dest = new RectF((float) itemView.getLeft() + width ,(float) itemView.getTop() + width,(float) itemView.getLeft()+ 2*width,(float)itemView.getBottom() - width);
         RectF leftButton = new RectF(itemView.getLeft(), itemView.getTop(), itemView.getLeft() + buttonWidthWithoutPadding, itemView.getBottom());
         p.setColor(Color.BLUE);
         c.drawRoundRect(leftButton, corners, corners, p);
-        c.drawBitmap(iconEdit,null,icon_dest,p);
+        drawText("EDIT", c, leftButton, p);
 
-        RectF icon_dest2 = new RectF((float) itemView.getRight() - 2*width ,(float) itemView.getTop() + width,(float) itemView.getRight() - width,(float)itemView.getBottom() - width);
+
         RectF rightButton = new RectF(itemView.getRight() - buttonWidthWithoutPadding, itemView.getTop(), itemView.getRight(), itemView.getBottom());
         p.setColor(Color.RED);
         c.drawRoundRect(rightButton, corners, corners, p);
-        c.drawBitmap(iconDelete, null, icon_dest2, p);
+        drawText("DELETE", c, rightButton, p);
 
         buttonInstance = null;
         if (buttonShowedState == ButtonsState.LEFT_VISIBLE) {
@@ -190,6 +173,16 @@ public class SwipeController extends Callback {
         else if (buttonShowedState == ButtonsState.RIGHT_VISIBLE) {
             buttonInstance = rightButton;
         }
+    }
+
+    private void drawText(String text, Canvas c, RectF button, Paint p) {
+        float textSize = 60;
+        p.setColor(Color.WHITE);
+        p.setAntiAlias(true);
+        p.setTextSize(textSize);
+
+        float textWidth = p.measureText(text);
+        c.drawText(text, button.centerX()-(textWidth/2), button.centerY()+(textSize/2), p);
     }
 
     public void onDraw(Canvas c) {

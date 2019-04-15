@@ -93,4 +93,16 @@ public class categoryDAO {
         contentValues.put(categoryDAO.NAMECATEGORY, categoryName);
         db.insert(categoryDAO.TABLE, null, contentValues);
     }
+    public void DeleteCategory(int id)
+    {
+        db = sqlHelper.Instance(categoryDAO.context).getWritableDatabase();
+        db.delete(categoryDAO.TABLE, categoryDAO.ID + " = ? ", new String[]{id + ""});
+    }
+    public void UpdateCategory(category c)
+    {
+        db = sqlHelper.Instance(categoryDAO.context).getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(categoryDAO.NAMECATEGORY, c.NameCategory());
+        db.update(categoryDAO.TABLE, contentValues, categoryDAO.ID + " = ? ", new String[]{c.Id() + ""});
+    }
 }

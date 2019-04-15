@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.admin.projectnow.DAO.categoryDAO;
 import com.example.admin.projectnow.MODEL.category;
 import com.example.admin.projectnow.R;
 
@@ -34,9 +35,17 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
     }
     public void RemoveItem(int position)
     {
+        categoryDAO.Instance(fragment.getContext()).DeleteCategory(this.list.get(position).Id());
         this.list.remove(position);
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, this.list.size());
+    }
+    public void UpdateItem(int position, String nameCategory)
+    {
+        list.get(position).NameCategory(nameCategory);
+        list.set(position, list.get(position));
+        notifyItemChanged(position);
+        categoryDAO.Instance(fragment.getContext()).UpdateCategory(list.get(position));
     }
     @NonNull
     @Override
