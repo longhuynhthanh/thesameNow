@@ -48,6 +48,12 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.AdminViewHol
             index++;
         }
     }
+    public void RemoveItem(int position)
+    {
+        this.accountList.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, this.accountList.size());
+    }
     @NonNull
     @Override
     public AdminViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -67,18 +73,6 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.AdminViewHol
         adminViewHolder.tvPassword.setText("Password: " + account.Password());
         adminViewHolder.tvPhone.setText("Phone: " + account.Phone());
         adminViewHolder.tvAddress.setText("Address: " + account.Address());
-        adminViewHolder.setItemClickListener(new ItemClickListener() {
-            @Override
-            public void OnClick(View view, int position, boolean isLongClick) {
-                if(isLongClick){
-
-                }
-                else
-                {
-
-                }
-            }
-        });
     }
 
     @Override
@@ -86,35 +80,17 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.AdminViewHol
         return this.accountList.size();
     }
 
-    public static class AdminViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
+    public static class AdminViewHolder extends RecyclerView.ViewHolder{
         @BindView(R.id.image) ImageView image;
         @BindView(R.id.tv_userName) TextView tvUserName;
         @BindView(R.id.tv_displayName) TextView tvDisplayName;
         @BindView(R.id.tv_passWord) TextView tvPassword;
         @BindView(R.id.tv_phone) TextView tvPhone;
         @BindView(R.id.tv_address) TextView tvAddress;
-        @BindView(R.id.image_delete)ImageView delete;
-        private ItemClickListener itemClickListener;
-        public void setItemClickListener(ItemClickListener itemClickListener)
-        {
-            this.itemClickListener = itemClickListener;
-        }
         public AdminViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            itemView.setOnClickListener(this);
-            itemView.setOnLongClickListener(this);
         }
 
-        @Override
-        public void onClick(View v) {
-            this.itemClickListener.OnClick(v, getAdapterPosition(), false);
-        }
-
-        @Override
-        public boolean onLongClick(View v) {
-            this.itemClickListener.OnClick(v, getAdapterPosition(), true);
-            return true;
-        }
     }
 }

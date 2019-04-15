@@ -32,6 +32,12 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
         this.list.add(category);
         notifyItemInserted(this.list.size() - 1);
     }
+    public void RemoveItem(int position)
+    {
+        this.list.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, this.list.size());
+    }
     @NonNull
     @Override
     public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {

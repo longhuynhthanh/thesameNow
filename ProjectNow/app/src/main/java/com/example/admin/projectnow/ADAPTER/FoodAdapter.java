@@ -42,6 +42,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
             {
                 this.foodList.remove(i);
                 notifyItemRemoved(i);
+                notifyItemRangeChanged(i, this.foodList.size());
                 break;
             }
         }
