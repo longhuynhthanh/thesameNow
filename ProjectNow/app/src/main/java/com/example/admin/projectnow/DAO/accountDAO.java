@@ -146,4 +146,9 @@ public class accountDAO {
         }
         return -1;
     }
+    public void DeleteAccount(String userName)
+    {
+        db = sqlHelper.Instance(accountDAO.context).getWritableDatabase();
+        db.delete(accountDAO.TABLE, accountDAO.USERNAME + " = ? ", new String[]{userName});
+    }
 }

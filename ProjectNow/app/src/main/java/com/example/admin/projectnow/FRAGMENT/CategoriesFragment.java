@@ -72,7 +72,7 @@ public class CategoriesFragment extends Fragment {
     //region Method
     public void ShowInterface()
     {
-        categoryList = categoryDAO.Instance(getContext()).Getcategories();
+        categoryList = categoryDAO.Instance(getContext()).GetCategories();
         if(categoryList.size() == 0)
         {
             categoryDAO.Instance(getContext()).InsertCategory("Coffee");
@@ -85,7 +85,7 @@ public class CategoriesFragment extends Fragment {
             categoryDAO.Instance(getContext()).InsertCategory("Beer");
             categoryDAO.Instance(getContext()).InsertCategory("Rice");
             categoryDAO.Instance(getContext()).InsertCategory("Noodle");
-            categoryList = categoryDAO.Instance(getContext()).Getcategories();
+            categoryList = categoryDAO.Instance(getContext()).GetCategories();
         }
         categoriesAdapter = new CategoriesAdapter(categoryList, this);
         rvCategories.setLayoutManager(new LinearLayoutManager(this.getContext()));

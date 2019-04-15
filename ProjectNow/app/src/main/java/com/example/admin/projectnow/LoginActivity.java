@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
         accountList = accountDAO.Instance(this).getAccount();
         if(accountList.size() == 0)
         {
-            accountDAO.Instance(this).InsertAccount(new account("admin", "123", "Admim", "12345", "ĐN", 0));
+            accountDAO.Instance(this).InsertAccount(new account("admin", "123", "Admin", "12345", "ĐN", 0));
             accountList = accountDAO.Instance(this).getAccount();
         }
         userName = "";

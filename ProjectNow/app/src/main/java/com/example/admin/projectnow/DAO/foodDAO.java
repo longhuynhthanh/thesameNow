@@ -84,4 +84,9 @@ public class foodDAO {
         contentValues.put(foodDAO.STATUS, f.Status());
         db.update(foodDAO.TABLE, contentValues, foodDAO.ID + " = ? ", new String[]{f.Id() + ""});
     }
+    public void DeleteFoodByCategoryID(int idCategory)
+    {
+        db = sqlHelper.Instance(foodDAO.context).getWritableDatabase();
+        db.delete(foodDAO.TABLE, foodDAO.IDCATEGORY + " = ? ", new String[]{idCategory + ""});
+    }
 }

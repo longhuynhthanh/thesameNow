@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.admin.projectnow.DAO.categoryDAO;
+import com.example.admin.projectnow.DAO.foodDAO;
 import com.example.admin.projectnow.MODEL.category;
 import com.example.admin.projectnow.R;
 
@@ -35,6 +36,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
     }
     public void RemoveItem(int position)
     {
+        foodDAO.Instance(fragment.getContext()).DeleteFoodByCategoryID(this.list.get(position).Id());
         categoryDAO.Instance(fragment.getContext()).DeleteCategory(this.list.get(position).Id());
         this.list.remove(position);
         notifyItemRemoved(position);

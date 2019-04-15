@@ -54,7 +54,7 @@ public class categoryDAO {
         }
         return list;
     }
-    public List<category> Getcategories()
+    public List<category> GetCategories()
     {
         List<category> list = new ArrayList<>();
         db = sqlHelper.Instance(categoryDAO.context).getReadableDatabase();

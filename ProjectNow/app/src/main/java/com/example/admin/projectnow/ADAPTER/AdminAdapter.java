@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.admin.projectnow.DAO.accountDAO;
 import com.example.admin.projectnow.INTERFACE.ItemClickListener;
 import com.example.admin.projectnow.MODEL.account;
 import com.example.admin.projectnow.R;
@@ -50,6 +52,7 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.AdminViewHol
     }
     public void RemoveItem(int position)
     {
+        accountDAO.Instance(fragment.getContext()).DeleteAccount(this.accountList.get(position).UserName());
         this.accountList.remove(position);
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, this.accountList.size());

@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.admin.projectnow.DAO.categoryDAO;
 import com.example.admin.projectnow.INTERFACE.OnInputSelected;
+import com.example.admin.projectnow.MODEL.category;
 import com.example.admin.projectnow.MODEL.food;
 import com.example.admin.projectnow.R;
 
@@ -33,13 +34,14 @@ import butterknife.OnClick;
 import butterknife.OnItemSelected;
 
 public class DialogFoodFragment extends DialogFragment {
-
+    private List<category> categoryList;
     private List<String> Category;
     private String[] Status = {"Hết Hàng", "Còn Hàng"};
     private int idCategory = 0;
     private String nameCategory = "";
     private OnInputSelected onInputSelected;
     private food food;
+    private int status = 0;
 
     //region BindView
     @BindView(R.id.heading) TextView tvHeading;
@@ -104,7 +106,12 @@ public class DialogFoodFragment extends DialogFragment {
     //region Method
     private void GetData()
     {
-        Category = categoryDAO.Instance(getContext()).GetNameCategory();
+        Category = new ArrayList<>();
+        categoryList = categoryDAO.Instance(getContext()).GetCategories();
+        for(category c : categoryList)
+        {
+            Category.add(c.NameCategory());
+        }
     }
     private void SetInterfaceByIndex()
     {
@@ -137,8 +144,8 @@ public class DialogFoodFragment extends DialogFragment {
         spn_Category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                idCategory = position + 1;
-                nameCategory = Category.get(position);
+                idCategory = categoryList.get(position).Id();
+                nameCategory = categoryList.get(position).NameCategory();
             }
 
             @Override
@@ -147,7 +154,7 @@ public class DialogFoodFragment extends DialogFragment {
             }
         });
     }
-    private int status = 0;
+
     private void StatusItem_Selected()
     {
         spn_Status.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
