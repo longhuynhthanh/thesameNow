@@ -36,7 +36,6 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
     }
     public void RemoveItem(int position)
     {
-        foodDAO.Instance(fragment.getContext()).DeleteFoodByCategoryID(this.list.get(position).Id());
         categoryDAO.Instance(fragment.getContext()).DeleteCategory(this.list.get(position).Id());
         this.list.remove(position);
         notifyItemRemoved(position);
