@@ -115,7 +115,7 @@ public class sqlHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(sql7);
         // Create Trigger khi xóa category sẽ xóa food có sử dụng category đó
-        String sql13 = "CREATE TRIGGER delete_food BEFORE DELETE ON " + categoryDAO.TABLE +
+        String sql13 = "CREATE TRIGGER delete_food_category BEFORE DELETE ON " + categoryDAO.TABLE +
                 " BEGIN" +
                 " DELETE FROM " + foodDAO.TABLE + " WHERE " + foodDAO.IDCATEGORY + " = old." + categoryDAO.ID + ";" +
                 " END;";
@@ -160,7 +160,7 @@ public class sqlHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TRIGGER IF EXISTS delete_food");
         sqLiteDatabase.execSQL("DROP TRIGGER IF EXISTS delete_bill");
         sqLiteDatabase.execSQL("DROP TRIGGER IF EXISTS delete_bill_info");
-        sqLiteDatabase.execSQL("DROP TRIGGER IF EXISTS delete_food");
+        sqLiteDatabase.execSQL("DROP TRIGGER IF EXISTS delete_food_category");
         onCreate(sqLiteDatabase);
     }
 }
