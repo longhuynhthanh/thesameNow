@@ -106,7 +106,7 @@ public class CategoriesFragment extends Fragment {
                 et_categoryName.setText(categoryList.get(position).NameCategory());
                 alertDialog.show();
             }
-        });
+        }, 0);
         ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
         itemTouchhelper.attachToRecyclerView(rvCategories);
         rvCategories.addItemDecoration(new RecyclerView.ItemDecoration() {

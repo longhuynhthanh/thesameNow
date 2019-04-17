@@ -76,7 +76,7 @@ public class StoreAccountFragment extends Fragment {
             public void onRightClicked(int position) {
                 adminAdapter.RemoveItem(position);
             }
-        });
+        }, 1);
         ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
         itemTouchhelper.attachToRecyclerView(rvAccounts);
 

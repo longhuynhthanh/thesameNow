@@ -29,11 +29,13 @@ public class SwipeController extends Callback {
 
     private SwipeControllerActions buttonsActions = null;
 
+    private  int type;
 
     private static final float buttonWidth = 300;
 
-    public SwipeController(SwipeControllerActions buttonsActions) {
+    public SwipeController(SwipeControllerActions buttonsActions, int type) {
         this.buttonsActions = buttonsActions;
+        this.type = type;
     }
 
     @Override
@@ -154,12 +156,13 @@ public class SwipeController extends Callback {
         float corners = 16;
         Paint p = new Paint();
 
-
         RectF leftButton = new RectF(itemView.getLeft(), itemView.getTop(), itemView.getLeft() + buttonWidthWithoutPadding, itemView.getBottom());
-        p.setColor(Color.BLUE);
-        c.drawRoundRect(leftButton, corners, corners, p);
-        drawText("EDIT", c, leftButton, p);
-
+        if(this.type == 0)
+        {
+            p.setColor(Color.BLUE);
+            c.drawRoundRect(leftButton, corners, corners, p);
+            drawText("EDIT", c, leftButton, p);
+        }
 
         RectF rightButton = new RectF(itemView.getRight() - buttonWidthWithoutPadding, itemView.getTop(), itemView.getRight(), itemView.getBottom());
         p.setColor(Color.RED);
