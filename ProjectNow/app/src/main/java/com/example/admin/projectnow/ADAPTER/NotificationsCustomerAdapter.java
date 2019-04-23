@@ -47,7 +47,7 @@ public class NotificationsCustomerAdapter extends RecyclerView.Adapter<Notificat
             @Override
             public void OnClick(View view, int position, boolean isLongClick) {
                 if(isLongClick){
-                    Toast.makeText(fragment.getContext(), "Lộc Óc Cức", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(fragment.getContext(), "Lộc Óc Chó Ăn Cức", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
