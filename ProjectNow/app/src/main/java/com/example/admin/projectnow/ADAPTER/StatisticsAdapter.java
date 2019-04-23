@@ -19,11 +19,24 @@ import butterknife.ButterKnife;
 public class StatisticsAdapter extends RecyclerView.Adapter<StatisticsAdapter.StatisticsViewHolder>{
     private List<statistics> statisticsList;
     private Fragment fragment;
+
+    //region init
     public StatisticsAdapter(List<statistics> list, Fragment fragment)
     {
         this.statisticsList = list;
         this.fragment = fragment;
     }
+    //endregion
+
+    //region Method
+    public void UpdateAllItem(List<statistics> list)
+    {
+        this.statisticsList.clear();
+        this.statisticsList.addAll(list);
+        notifyDataSetChanged();
+    }
+    //endregion
+
     @NonNull
     @Override
     public StatisticsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -44,15 +57,7 @@ public class StatisticsAdapter extends RecyclerView.Adapter<StatisticsAdapter.St
         return this.statisticsList.size();
     }
 
-    //region Method
-    public void UpdateAllItem(List<statistics> list)
-    {
-        this.statisticsList.clear();
-        this.statisticsList.addAll(list);
-        notifyDataSetChanged();
-    }
-    //endregion
-
+    //region Class View Holder
     public static class StatisticsViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.statistics_checkIn)TextView tvCheckIn;
         @BindView(R.id.statistics_checkout)TextView tvCheckOut;
@@ -62,4 +67,5 @@ public class StatisticsAdapter extends RecyclerView.Adapter<StatisticsAdapter.St
             ButterKnife.bind(this, itemView);
         }
     }
+    //endregion
 }

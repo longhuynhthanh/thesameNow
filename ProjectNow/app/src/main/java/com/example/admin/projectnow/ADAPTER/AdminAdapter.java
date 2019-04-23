@@ -24,13 +24,16 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.AdminViewHol
     private Fragment fragment;
     private int type;
 
+    //region Init
     public AdminAdapter(List<account> list, Fragment fragment, int type)
     {
         this.accountList = list;
         this.fragment = fragment;
         this.type = type;
     }
+    //endregion
 
+    //region Method
     public void AddItem(account a)
     {
         this.accountList.add(a);
@@ -57,6 +60,8 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.AdminViewHol
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, this.accountList.size());
     }
+    //endregion
+
     @NonNull
     @Override
     public AdminViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -83,6 +88,7 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.AdminViewHol
         return this.accountList.size();
     }
 
+    //region Class View Holder
     public static class AdminViewHolder extends RecyclerView.ViewHolder{
         @BindView(R.id.image) ImageView image;
         @BindView(R.id.tv_userName) TextView tvUserName;
@@ -96,4 +102,5 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.AdminViewHol
         }
 
     }
+    //endregion
 }

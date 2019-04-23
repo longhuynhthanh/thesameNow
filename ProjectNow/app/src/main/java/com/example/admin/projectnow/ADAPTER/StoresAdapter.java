@@ -27,6 +27,8 @@ public class StoresAdapter extends RecyclerView.Adapter<StoresAdapter.StoresView
     private Fragment fragment;
     private int status;
     private account account;
+
+    //region init
     public StoresAdapter(List<storeLocation> list, Fragment fragment, int status, account account)
     {
         this.list = list;
@@ -34,6 +36,8 @@ public class StoresAdapter extends RecyclerView.Adapter<StoresAdapter.StoresView
         this.status = status;
         this.account = account;
     }
+    //endregion
+
     @NonNull
     @Override
     public StoresViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -52,7 +56,7 @@ public class StoresAdapter extends RecyclerView.Adapter<StoresAdapter.StoresView
                 @Override
                 public void OnClick(View view, int position, boolean isLongClick) {
                     if(isLongClick){
-
+                        Toast.makeText(fragment.getContext(), "Lộc Óc Chó", Toast.LENGTH_SHORT).show();
                     }
                     else
                     {
@@ -68,6 +72,7 @@ public class StoresAdapter extends RecyclerView.Adapter<StoresAdapter.StoresView
         return this.list.size();
     }
 
+    //region Class View Holder
     public static class StoresViewHolder extends RecyclerView.ViewHolder implements View.OnLongClickListener, View.OnClickListener {
         @BindView(R.id.tv_nameStore) TextView tvNameStore;
         @BindView(R.id.tv_locationStore) TextView tvLocationStore;
@@ -94,4 +99,5 @@ public class StoresAdapter extends RecyclerView.Adapter<StoresAdapter.StoresView
             return true;
         }
     }
+    //endregion
 }

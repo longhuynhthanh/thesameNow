@@ -66,6 +66,7 @@ public class StoreAccountFragment extends Fragment {
         return view;
     }
 
+    //region Method
     public void UpdateInterface()
     {
         accountList = accountDAO.Instance(this.getContext()).getAccountIsStores();
@@ -87,7 +88,9 @@ public class StoreAccountFragment extends Fragment {
             }
         });
     }
+    //endregion
 
+    //region Event
     @OnClick(R.id.insertAccount)
     public void Insert()
     {
@@ -134,4 +137,5 @@ public class StoreAccountFragment extends Fragment {
 
         alerDialog.show();
     }
+    //endregion
 }

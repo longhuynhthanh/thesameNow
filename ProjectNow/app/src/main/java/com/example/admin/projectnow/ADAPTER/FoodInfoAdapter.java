@@ -21,11 +21,14 @@ public class FoodInfoAdapter extends RecyclerView.Adapter<FoodInfoAdapter.FoodIn
     private List<foodInfo> foodInfoList;
     private Fragment fragment;
 
+    //region Init
     public FoodInfoAdapter(List<foodInfo> list, Fragment fragment)
     {
         this.foodInfoList = list;
         this.fragment = fragment;
     }
+    //endregion
+
     @NonNull
     @Override
     public FoodInfoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -76,6 +79,10 @@ public class FoodInfoAdapter extends RecyclerView.Adapter<FoodInfoAdapter.FoodIn
         {
             foodInfoViewHolder.image.setImageResource(R.drawable.ic_noodle);
         }
+        else
+        {
+            foodInfoViewHolder.image.setImageResource(R.drawable.ic_breakfast);
+        }
         foodInfoViewHolder.tvNameFood.setText("Tên Món Ăn: " + foodInfo.NameFood());
         foodInfoViewHolder.tvPrice.setText("Giá: " + foodInfo.Price() + " VNĐ");
         foodInfoViewHolder.tvCount.setText("Số Lượng: " + foodInfo.Count());
@@ -87,6 +94,7 @@ public class FoodInfoAdapter extends RecyclerView.Adapter<FoodInfoAdapter.FoodIn
         return this.foodInfoList.size();
     }
 
+    //region Class View Holder
     public static class FoodInfoViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.info_nameFood)TextView tvNameFood;
         @BindView(R.id.info_price)TextView tvPrice;
@@ -98,4 +106,5 @@ public class FoodInfoAdapter extends RecyclerView.Adapter<FoodInfoAdapter.FoodIn
             ButterKnife.bind(this, itemView);
         }
     }
+    //endregion
 }

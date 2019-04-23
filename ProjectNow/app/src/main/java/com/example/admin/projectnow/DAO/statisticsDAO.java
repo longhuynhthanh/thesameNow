@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class statisticsDAO {
     private static statisticsDAO instance;
@@ -36,13 +37,23 @@ public class statisticsDAO {
 
     public List<statistics> GetStatistics(String date, int idStore)
     {
+        String reformattedStr = "";
+        SimpleDateFormat fromUser = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        try {
+            reformattedStr = myFormat.format(fromUser.parse(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         List<statistics> list = new ArrayList<>();
         db = sqlHelper.Instance(statisticsDAO.context).getReadableDatabase();
         String sql = "SELECT DISTINCT b." + billDAO.ID + ", b." + billDAO.CHECKOUT + ", b." + billDAO.CHECKIN + ", (SELECT SUM(f1." + foodDAO.PRICE + "*bi1." + billInfoDAO.COUNTFOOD + ") " +
                 " FROM " + foodDAO.TABLE + " AS f1, " + billDAO.TABLE + " AS b1, " + billInfoDAO.TABLE + " AS bi1" +
                 " WHERE f1." + foodDAO.ID + " = bi1." + billInfoDAO.IDFOOD + " AND b1." + billDAO.ID + " = bi1." + billInfoDAO.IDBILL + " AND b1." + billDAO.STATUS + " = 1 AND b1." + billDAO.ID + " = b." + billDAO.ID + ")" +
                 " FROM " + billDAO.TABLE + " AS b, " + billInfoDAO.TABLE + " AS bi" +
-                " WHERE b." + billDAO.ID + " = bi." + billInfoDAO.IDBILL + " AND b.idStore = " + idStore + " AND  strftime('%d', (b." + billDAO.CHECKOUT + ")) = strftime('%d', ('" + date + "'));";
+                " WHERE b." + billDAO.ID + " = bi." + billInfoDAO.IDBILL + " AND b.idStore = " + idStore + " AND  strftime('%d', (b." + billDAO.CHECKOUT + ")) = strftime('%d', ('" + reformattedStr + "'));";
         Cursor cursor = db.rawQuery(sql, null);
         if(cursor.moveToFirst())
         {

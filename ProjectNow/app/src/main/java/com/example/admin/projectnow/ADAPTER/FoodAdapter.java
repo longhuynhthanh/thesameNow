@@ -24,11 +24,16 @@ import butterknife.ButterKnife;
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder>{
     private List<food> foodList;
     private Fragment fragment;
+
+    //region init
     public FoodAdapter(List<food> list, Fragment fragment)
     {
         this.foodList = list;
         this.fragment = fragment;
     }
+    //endregion
+
+    //region Method
     public void AddItem(food f)
     {
         this.foodList.add(f);
@@ -61,6 +66,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
             index++;
         }
     }
+    //endregion
+
     @NonNull
     @Override
     public FoodViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -121,6 +128,10 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         {
             foodViewHolder.image.setImageResource(R.drawable.ic_noodle);
         }
+        else
+        {
+            foodViewHolder.image.setImageResource(R.drawable.ic_breakfast);
+        }
         foodViewHolder.setItemClickListener(new ItemClickListener() {
             @Override
             public void OnClick(View view, int position, boolean isLongClick) {
@@ -143,15 +154,12 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         return this.foodList.size();
     }
 
+    //region Class View Holder
     public static class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnLongClickListener, View.OnClickListener{
-        @BindView(R.id.tv_nameFood)
-        TextView tvNameFood;
-        @BindView(R.id.tv_price)
-        TextView tvPrice;
-        @BindView(R.id.tv_status)
-        TextView tvStatus;
-        @BindView(R.id.image)
-        ImageView image;
+        @BindView(R.id.tv_nameFood) TextView tvNameFood;
+        @BindView(R.id.tv_price) TextView tvPrice;
+        @BindView(R.id.tv_status) TextView tvStatus;
+        @BindView(R.id.image) ImageView image;
 
         private ItemClickListener itemClickListener;
         public void setItemClickListener(ItemClickListener itemClickListener)
@@ -177,4 +185,5 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
             return true;
         }
     }
+    //endregion
 }

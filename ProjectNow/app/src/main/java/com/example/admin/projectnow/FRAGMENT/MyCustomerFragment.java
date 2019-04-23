@@ -39,6 +39,7 @@ public class MyCustomerFragment extends Fragment {
     @BindView(R.id.rv_accounts)
     RecyclerView rvAccounts;
     //endregion
+
     //region Instance
     public static MyCustomerFragment Instance()
     {
@@ -61,6 +62,7 @@ public class MyCustomerFragment extends Fragment {
         return view;
     }
 
+    //region Method
     public void UpdateInterface()
     {
         accountList = accountDAO.Instance(this.getContext()).getAccountIsCustomer();
@@ -71,7 +73,7 @@ public class MyCustomerFragment extends Fragment {
             public void onRightClicked(int position) {
                 adminAdapter.RemoveItem(position);
             }
-        }, 0);
+        }, 1);
         ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
         itemTouchhelper.attachToRecyclerView(rvAccounts);
 
@@ -82,7 +84,9 @@ public class MyCustomerFragment extends Fragment {
             }
         });
     }
+    //endregion
 
+    //region Event
     @OnClick(R.id.insertAccount)
     public void Insert()
     {
@@ -116,4 +120,5 @@ public class MyCustomerFragment extends Fragment {
 
         alerDialog.show();
     }
+    //endregion
 }

@@ -84,7 +84,7 @@ public class StatisticsFragment extends Fragment {
         }
     }
     private void updateLabel(Calendar myCalendar) {
-        String myFormat = "yyyy-MM-dd";
+        String myFormat = "dd-MM-yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.TAIWAN);
         DateTime.setText(sdf.format(myCalendar.getTime()));
     }

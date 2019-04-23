@@ -21,12 +21,16 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
     private List<food> foodList;
     private List<Integer> countList;
     private Fragment fragment;
+
+    //region init
     public ShoppingCartAdapter(List<food> foodList, List<Integer> countList, Fragment fragment)
     {
         this.foodList = foodList;
         this.countList = countList;
         this.fragment = fragment;
     }
+    //endregion
+
     @NonNull
     @Override
     public ShoppingCartViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -78,6 +82,10 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
         {
             shoppingCartViewHolder.image.setImageResource(R.drawable.ic_noodle);
         }
+        else
+        {
+            shoppingCartViewHolder.image.setImageResource(R.drawable.ic_breakfast);
+        }
         shoppingCartViewHolder.tvNameFood.setText("Tên Món Ăn: " + food.NameFood());
         shoppingCartViewHolder.tvPrice.setText("Giá: " + food.Price() + " VNĐ");
         shoppingCartViewHolder.tvCount.setText("Số Lượng: " + count);
@@ -88,6 +96,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
         return this.foodList.size();
     }
 
+    //region Class View Holder
     public static class ShoppingCartViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.shopping_cart_image) ImageView image;
         @BindView(R.id.shopping_cart_nameFood) TextView tvNameFood;
@@ -98,4 +107,5 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
             ButterKnife.bind(this, itemView);
         }
     }
+    //endregion
 }

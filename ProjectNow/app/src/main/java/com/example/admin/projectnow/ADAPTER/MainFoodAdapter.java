@@ -25,6 +25,8 @@ public class MainFoodAdapter extends RecyclerView.Adapter<MainFoodAdapter.MainFo
     private Fragment fragment;
     private account account;
     private ShoppingCart shoppingCart;
+
+    //region init
     public MainFoodAdapter(List<food> list, Fragment fragment, ShoppingCart shoppingCart, account account)
     {
         this.foodList = list;
@@ -32,6 +34,8 @@ public class MainFoodAdapter extends RecyclerView.Adapter<MainFoodAdapter.MainFo
         this.shoppingCart = shoppingCart;
         this.account = account;
     }
+    //endregion
+
     @NonNull
     @Override
     public MainFoodViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -93,6 +97,10 @@ public class MainFoodAdapter extends RecyclerView.Adapter<MainFoodAdapter.MainFo
         {
             mainFoodViewHolder.image.setImageResource(R.drawable.ic_noodle);
         }
+        else
+        {
+            mainFoodViewHolder.image.setImageResource(R.drawable.ic_breakfast);
+        }
         mainFoodViewHolder.imgMinus.setVisibility(View.INVISIBLE);
         mainFoodViewHolder.tvCount.setVisibility(View.INVISIBLE);
         if(food.Status() == 1)
@@ -152,6 +160,7 @@ public class MainFoodAdapter extends RecyclerView.Adapter<MainFoodAdapter.MainFo
         return this.foodList.size();
     }
 
+    //region Class View Holder
     public static class MainFoodViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.main_food_image) ImageView image;
         @BindView(R.id.main_food_nameFood) TextView tvNameFood;
@@ -166,4 +175,5 @@ public class MainFoodAdapter extends RecyclerView.Adapter<MainFoodAdapter.MainFo
             ButterKnife.bind(this, itemView);
         }
     }
+    //endregion
 }

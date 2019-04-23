@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.admin.projectnow.FRAGMENT.FoodInfoFragment;
 import com.example.admin.projectnow.INTERFACE.ItemClickListener;
@@ -23,11 +24,14 @@ public class NotificationsCustomerAdapter extends RecyclerView.Adapter<Notificat
     private List<bill> billList;
     private Fragment fragment;
 
+    //region init
     public NotificationsCustomerAdapter(List<bill> list, Fragment fragment)
     {
         this.billList = list;
         this.fragment = fragment;
     }
+    //endregion
+
     @NonNull
     @Override
     public NotificationsCustomerViewholder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -42,7 +46,9 @@ public class NotificationsCustomerAdapter extends RecyclerView.Adapter<Notificat
         notificationsCustomerViewholder.setItemClickListener(new ItemClickListener() {
             @Override
             public void OnClick(View view, int position, boolean isLongClick) {
-                if(isLongClick){}
+                if(isLongClick){
+                    Toast.makeText(fragment.getContext(), "Lộc Óc Cức", Toast.LENGTH_SHORT).show();
+                }
                 else
                 {
                     function.Instance().initFragment(fragment.getActivity().getSupportFragmentManager(), FoodInfoFragment.Instance(bill.Id(), 1));
@@ -56,6 +62,7 @@ public class NotificationsCustomerAdapter extends RecyclerView.Adapter<Notificat
         return this.billList.size();
     }
 
+    //region Class View Holder
     public static class NotificationsCustomerViewholder extends RecyclerView.ViewHolder implements View.OnLongClickListener, View.OnClickListener{
         @BindView(R.id.noti_customer_check_in)TextView tvCheckIn;
         private ItemClickListener itemClickListener;
@@ -82,4 +89,5 @@ public class NotificationsCustomerAdapter extends RecyclerView.Adapter<Notificat
             return true;
         }
     }
+    //endregion
 }

@@ -1,14 +1,13 @@
 package com.example.admin.projectnow.ADAPTER;
 
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.admin.projectnow.FRAGMENT.FoodInfoFragment;
 import com.example.admin.projectnow.INTERFACE.ItemClickListener;
@@ -26,12 +25,14 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
     private Fragment fragment;
     private int type;
 
+    //region init
     public NotificationsAdapter(List<notification> list, Fragment fragment, int type)
     {
         this.notificationList = list;
         this.fragment = fragment;
         this.type = type;
     }
+    //endregion
 
     @NonNull
     @Override
@@ -50,7 +51,9 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
         notificationViewHolder.setItemClickListener(new ItemClickListener() {
             @Override
             public void OnClick(View view, int position, boolean isLongClick) {
-                if(isLongClick){}
+                if(isLongClick){
+                    Toast.makeText(fragment.getContext(), "Lộc Óc Trâu", Toast.LENGTH_SHORT).show();
+                }
                 else
                 {
                     function.Instance().initFragment(fragment.getActivity().getSupportFragmentManager(), FoodInfoFragment.Instance(notification.IdBill(), 0));
@@ -64,6 +67,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
         return this.notificationList.size();
     }
 
+    //region Class View Holder
     public static class NotificationViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         @BindView(R.id.noti_customer_name)TextView tvName;
         @BindView(R.id.noti_customer_phone)TextView tvPhone;
@@ -93,4 +97,5 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
             return true;
         }
     }
+    //endregion
 }

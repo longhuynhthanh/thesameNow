@@ -21,11 +21,14 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
     private List<favorites> favoritesList;
     private Fragment fragment;
 
+    //region init
     public FavoritesAdapter(List<favorites> list, Fragment fragment)
     {
         this.favoritesList = list;
         this.fragment = fragment;
     }
+    //endregion
+
     @NonNull
     @Override
     public FavoritesViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -76,9 +79,13 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
         {
             favoritesViewHolder.image.setImageResource(R.drawable.ic_noodle);
         }
+        else
+        {
+            favoritesViewHolder.image.setImageResource(R.drawable.ic_breakfast);
+        }
         favoritesViewHolder.tvNameFood.setText("Tên Món Ăn: " + favorites.NameFood());
         favoritesViewHolder.tvNameStore.setText("Đang Bán Tại Cửa Hàng: " + favorites.NameStore());
-        favoritesViewHolder.tvCountFood.setText("Số Lượng Mua: " + favorites.Count());
+        favoritesViewHolder.tvCountFood.setText("Số Lượt Mua: " + favorites.Count());
         favoritesViewHolder.tvPrice.setText("Giá: " + favorites.Price() + " VNĐ");
     }
 
@@ -87,6 +94,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
         return this.favoritesList.size();
     }
 
+    //region Class View Holder
     public static class FavoritesViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.fa_image)ImageView image;
         @BindView(R.id.fa_nameFood)TextView tvNameFood;
@@ -98,4 +106,5 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
             ButterKnife.bind(this, itemView);
         }
     }
+    //endregion
 }

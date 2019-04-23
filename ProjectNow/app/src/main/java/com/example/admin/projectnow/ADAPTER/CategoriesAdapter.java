@@ -24,11 +24,15 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
     private List<category> list;
     private Fragment fragment;
 
+    //region Init
     public CategoriesAdapter(List<category> list, Fragment fragment)
     {
         this.list = list;
         this.fragment = fragment;
     }
+    //endregion
+
+    //region Method
     public void AddItem(category category)
     {
         this.list.add(category);
@@ -48,6 +52,8 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
         notifyItemChanged(position);
         categoryDAO.Instance(fragment.getContext()).UpdateCategory(list.get(position));
     }
+    //endregion
+
     @NonNull
     @Override
     public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -99,6 +105,10 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
         {
             categoryViewHolder.image.setImageResource(R.drawable.ic_noodle);
         }
+        else
+        {
+            categoryViewHolder.image.setImageResource(R.drawable.ic_breakfast);
+        }
     }
 
     @Override
@@ -106,6 +116,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
         return this.list.size();
     }
 
+    //region Class View Holder
     public static class CategoryViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.tv_categoryName)
         TextView tv_categoryName;
@@ -116,4 +127,5 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
             ButterKnife.bind(this, itemView);
         }
     }
+    //endregion
 }
