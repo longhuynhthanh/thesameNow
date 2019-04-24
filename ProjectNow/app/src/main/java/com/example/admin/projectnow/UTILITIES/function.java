@@ -40,7 +40,7 @@ public class function {
         try {
             et.getText().toString();
         }catch (Exception e){
-            Toast.makeText(context, "Vui lòng Nhập Lại", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Vui Lòng Nhập Lại", Toast.LENGTH_SHORT).show();
         }
     }
 }
